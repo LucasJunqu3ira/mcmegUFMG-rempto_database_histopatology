@@ -17,6 +17,9 @@ jobs:
 
       - run: npm install googleapis
 
+      - name: List files
+        run: ls -la
+
       - name: Export Google Sheets to data.json
         env:
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
