@@ -2,7 +2,10 @@ const { google } = require('googleapis');
 const fs = require('fs');
 
 async function main() {
-  const credentials = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON);
+    const raw = process.env.GOOGLE_SERVICE_ACCOUNT_JSON || '';
+  console.log('JSON length:', raw.length);
+  console.log('Starts with:', raw.substring(0, 20));
+  const credentials = JSON.parse(raw);
   const auth = new google.auth.GoogleAuth({
     credentials,
     scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly']
